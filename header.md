@@ -50,6 +50,7 @@
 启动前请自行提供以下配置：
 
 - 数据库连接：`DB_HOST`、`DB_PORT`、`DB_USER`、`DB_PASSWORD`、`DB_NAME`
+- 本地开发也可新建 `db/dbConfigDev.local.js` 保存本地数据库配置，该文件不会被 Git 提交
 - 邮件服务：`SMTP_HOST`、`SMTP_PORT`、`SMTP_USER`、`SMTP_PASS`、`SMTP_FROM`
 - 文件访问：`OSS_BUCKET_NAME`、`OSS_BUCKET_URL`
 

@@ -1,3 +1,7 @@
 node_modules
 .history
 upload
+db/dbConfigDev.local.js
+db/dbConfigOnl.local.js
+.env
+.env.local

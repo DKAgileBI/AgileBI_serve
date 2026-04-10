@@ -46,5 +46,6 @@ source h_templates/templates_user_permission.sql;
 -- 9) 可选：老库升级（仅当你的 led_components 表缺字段时再执行；新库不需要）
 -- source g_components/alter_components_add_component_type.sql;
 -- source g_components/alter_components_add_visibility.sql;
+-- source c_project/alter_projects_add_runtime_fields.sql;
 
 SET FOREIGN_KEY_CHECKS = 1;

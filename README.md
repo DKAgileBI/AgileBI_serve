@@ -76,6 +76,7 @@ npm install
 ### 准备数据库
 
 - 按运行环境配置数据库连接信息。
+- 本地开发建议新建 `db/dbConfigDev.local.js`，该文件已加入 `.gitignore`，可安全填写本地数据库账号密码。
 - 相关文件主要位于 `db/` 和 `config/` 目录。
 - 首次初始化数据库时，建议按 `sql/run_all.sql` 顺序导入。
 

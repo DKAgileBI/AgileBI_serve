@@ -10,13 +10,22 @@
  * @function connect   数据链接内
  * @description 数据链接封装
  **/
+const fs = require('fs');
+const path = require('path');
 const RUN_MODE = process.env.RUN_MODE || 'dev';
-let config = ''
-if (RUN_MODE==='dev') {
-    config=require('../db/dbConfigDev');
-}else if(RUN_MODE==='online'){
-    config=require('../db/dbConfigOnl');
+function loadDbConfig(runMode) {
+    const configFile = runMode === 'online' ? 'dbConfigOnl' : 'dbConfigDev';
+    const localConfigPath = path.join(__dirname, '..', 'db', `${configFile}.local.js`);
+    const defaultConfigPath = path.join(__dirname, '..', 'db', `${configFile}.js`);
+
+    if (fs.existsSync(localConfigPath)) {
+        return require(localConfigPath);
+    }
+
+    return require(defaultConfigPath);
 }
+
+const config = loadDbConfig(RUN_MODE);
 const mysql = require('mysql'); 
 const colors = require('colors');
 
