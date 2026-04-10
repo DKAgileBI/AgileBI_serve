@@ -1,0 +1,27 @@
+{
+    "name": "NodeAPI",
+    "version": "1.0.0",
+    "description": "NodeAPI3000",
+    "title": "测试API文档",
+    "url": "https://api.github.com/v1",
+    "sampleUrl": "https://api.github.com/v1/test",
+    "apidoc": {
+        "name": "nodeAPI_dom",
+        "description": "这是用node写的API接口",
+        "title": "接口文档",
+        "header": {
+            "title": "前言",
+            "filename": "header.md"
+        },
+        "footer": {
+            "title": "结束",
+            "filename": "footer.md"
+        }
+    },
+    "order": [
+        "Error",
+        "Define",
+        "PostTitleAndError",
+        "PostError"
+    ]
+}

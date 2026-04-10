@@ -1,0 +1,13 @@
+[
+    "/",
+    "/api/dkBi/sys/login",
+    "/api/dkBi/sys/register",
+    "/api/dkBi/sys/getOssInfo",
+    "/api/dkBi/sys/uploadAvatar",
+    "/api/dkBi/sys/email/sendCode",
+    "/api/verifyToken",
+    "/api/dkBi/project/getData",
+    "/api/dkBi/sys/dict/getData",
+    "/api/dkBi/sys/dict/list",
+    "/api/serveMnus"
+]

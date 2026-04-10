@@ -1,0 +1,149 @@
+/*
+  apidoc “科技感”暗色主题覆盖
+  说明：仅通过 CSS 覆盖默认样式；不改接口内容结构。
+*/
+
+:root {
+  --tech-bg: #0b1020;
+  --tech-panel: #0f172a;
+  --tech-panel-2: #0b1220;
+  --tech-border: rgba(148, 163, 184, 0.18);
+  --tech-text: #e2e8f0;
+  --tech-muted: rgba(226, 232, 240, 0.70);
+  --tech-accent: #4cc9f0;
+  --tech-accent-2: #7c3aed;
+  --tech-code-bg: #0a0f1d;
+}
+
+html,
+body {
+  background: radial-gradient(1200px 700px at 15% 0%, rgba(76, 201, 240, 0.12), transparent 55%),
+    radial-gradient(900px 600px at 85% 10%, rgba(124, 58, 237, 0.12), transparent 55%),
+    var(--tech-bg);
+  color: var(--tech-text);
+}
+
+/* 统一链接/按钮强调色 */
+a,
+a:hover,
+a:focus {
+  color: var(--tech-accent);
+}
+
+/* 顶部项目标题区域 */
+#project,
+.project,
+.project>div {
+  color: var(--tech-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--tech-text);
+}
+
+/* 侧边导航 */
+#scrollingNav {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(11, 18, 32, 0.88));
+  border-right: 1px solid var(--tech-border);
+  box-shadow: 0 0 0 1px rgba(76, 201, 240, 0.06) inset;
+}
+
+#scrollingNav .sidenav-search {
+  border-bottom: 1px solid var(--tech-border);
+}
+
+#scrollingNav input.form-control {
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--tech-text);
+  border: 1px solid var(--tech-border);
+}
+
+#scrollingNav .nav-header a {
+  color: var(--tech-text);
+  letter-spacing: 0.2px;
+}
+
+#scrollingNav .nav-list>li>a {
+  color: var(--tech-muted);
+}
+
+#scrollingNav .nav-list>li>a:hover,
+#scrollingNav .nav-list>li.active>a,
+#scrollingNav .nav-list>li>a:focus {
+  color: var(--tech-text);
+  background: rgba(76, 201, 240, 0.10);
+  border-left: 2px solid var(--tech-accent);
+}
+
+/* 主内容卡片 */
+.panel,
+.panel-default {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--tech-border);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.30),
+    0 0 0 1px rgba(76, 201, 240, 0.06) inset;
+}
+
+.panel-heading {
+  background: linear-gradient(90deg, rgba(76, 201, 240, 0.10), rgba(124, 58, 237, 0.06));
+  border-bottom: 1px solid var(--tech-border);
+  color: var(--tech-text);
+}
+
+.panel-title,
+.panel-title a {
+  color: var(--tech-text);
+}
+
+/* 表格/分割线 */
+.table>thead>tr>th,
+.table>tbody>tr>td {
+  border-top: 1px solid var(--tech-border);
+}
+
+hr {
+  border-top: 1px solid var(--tech-border);
+}
+
+/* 代码块（prism） */
+pre,
+code {
+  background: var(--tech-code-bg) !important;
+  color: var(--tech-text) !important;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+pre {
+  box-shadow: 0 0 0 1px rgba(76, 201, 240, 0.06) inset;
+}
+
+/* 标签/徽标 */
+.label,
+.badge {
+  background: rgba(76, 201, 240, 0.12);
+  border: 1px solid rgba(76, 201, 240, 0.28);
+  color: var(--tech-text);
+}
+
+/* 提示文字 */
+.text-muted {
+  color: rgba(226, 232, 240, 0.60) !important;
+}
+
+/* 搜索 reset x */
+#scrollingNav .search-reset {
+  color: rgba(226, 232, 240, 0.75);
+}
+
+/* 小屏幕适配：减少背景干扰 */
+@media (max-width: 768px) {
+
+  html,
+  body {
+    background: var(--tech-bg);
+  }
+}

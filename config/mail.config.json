@@ -1,0 +1,19 @@
+{
+  "smtp": {
+    "host": "",
+    "port": 465,
+    "secure": true,
+    "user": "",
+    "pass": "",
+    "from": ""
+  },
+  "mail": {
+    "brand": "AgileBI",
+    "site": "",
+    "subject": "【AgileBI】注册验证码",
+    "template": {
+      "text": "【AgileBI】\n\n你的注册验证码是：{code}\n有效期：{minutes} 分钟\n\n如非本人操作，请忽略本邮件。\n",
+      "html": "<div style=\"font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, PingFang SC, Microsoft YaHei, sans-serif; line-height: 1.6;\">\n  <h2 style=\"margin:0 0 12px;\">AgileBI 注册验证码</h2>\n  <p>你的验证码是：<b style=\"font-size: 20px;\">{code}</b></p>\n  <p>有效期：{minutes} 分钟</p>\n  <p style=\"color:#666;\">如非本人操作，请忽略本邮件。</p>\n</div>"
+    }
+  }
+}

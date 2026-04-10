@@ -1,0 +1,732 @@
+/*
+  apidoc 企业级 BI + AI 文档主题
+  说明：基于当前 apidoc 输出结构做视觉增强，不改接口内容结构。
+*/
+
+:root {
+  --docs-bg: #f3f7fb;
+  --docs-bg-grid: rgba(15, 23, 42, 0.035);
+  --docs-panel: rgba(255, 255, 255, 0.92);
+  --docs-panel-solid: #ffffff;
+  --docs-border: rgba(15, 23, 42, 0.10);
+  --docs-border-strong: rgba(15, 23, 42, 0.16);
+  --docs-text: #122033;
+  --docs-muted: rgba(18, 32, 51, 0.68);
+  --docs-accent: #0f8bff;
+  --docs-accent-2: #10b981;
+  --docs-accent-soft: rgba(15, 139, 255, 0.10);
+  --docs-accent-soft-2: rgba(16, 185, 129, 0.10);
+  --docs-shadow: 0 22px 60px rgba(15, 23, 42, 0.12), 0 3px 14px rgba(15, 23, 42, 0.05);
+  --docs-shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08), 0 2px 10px rgba(15, 23, 42, 0.05);
+  --docs-radius: 16px;
+  --docs-radius-sm: 12px;
+  --docs-code-bg: #0d1726;
+}
+
+html,
+body {
+  background:
+    linear-gradient(180deg, rgba(15, 139, 255, 0.05), transparent 220px),
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.08), transparent 26%),
+    linear-gradient(var(--docs-bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--docs-bg-grid) 1px, transparent 1px),
+    var(--docs-bg);
+  background-size: auto, auto, 24px 24px, 24px 24px, auto;
+  color: var(--docs-text);
+}
+
+body {
+  font-family: "Segoe UI Variable", "Segoe UI", "PingFang SC", "Microsoft YaHei UI", "Noto Sans SC", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 全局链接 */
+a,
+a:hover,
+a:focus {
+  color: var(--docs-accent);
+  text-decoration: none;
+}
+
+/* 主内容区域留白更像文档站 */
+#content {
+  margin-top: 24px;
+  padding-left: 26px;
+  padding-right: 20px;
+}
+
+p {
+  color: var(--docs-muted) !important;
+  font-size: 15px;
+  line-height: 1.82;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--docs-text);
+  letter-spacing: 0.1px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 760;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 720;
+}
+
+h3 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* 侧边导航：白底、细边、轻阴影 */
+#scrollingNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  z-index: 1030;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.96));
+  border-right: 1px solid var(--docs-border);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+/* main.css 的深色导航其实在 ul.sidenav + .sidenav-search，这里需要强覆盖 */
+#scrollingNav .sidenav,
+#scrollingNav .sidenav-search {
+  background-color: transparent !important;
+  color: var(--docs-text) !important;
+}
+
+#scrollingNav .sidenav {
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding-top: 64px;
+  padding-bottom: 32px;
+  border-right: none;
+}
+
+#scrollingNav .sidenav>li>a {
+  color: rgba(15, 23, 42, 0.78) !important;
+  border-radius: 12px;
+  margin: 3px 10px;
+  padding: 10px 13px;
+  transition: all 0.18s ease;
+}
+
+#scrollingNav .sidenav>li:not(.active)>a:hover {
+  background-color: var(--docs-accent-soft) !important;
+  color: var(--docs-text) !important;
+  transform: translateX(2px);
+}
+
+#scrollingNav .sidenav>li.nav-header>a {
+  background: linear-gradient(135deg, rgba(15, 139, 255, 0.10), rgba(16, 185, 129, 0.08)) !important;
+  color: rgba(15, 23, 42, 0.94) !important;
+  border: 1px solid rgba(15, 139, 255, 0.12);
+  border-radius: 14px;
+  margin: 10px 10px 6px;
+  padding: 11px 12px;
+}
+
+#scrollingNav .sidenav>li.active>a {
+  background: linear-gradient(90deg, rgba(15, 139, 255, 0.14), rgba(16, 185, 129, 0.10)) !important;
+  color: var(--docs-text) !important;
+  box-shadow: 0 0 0 1px rgba(15, 139, 255, 0.12) inset;
+}
+
+#scrollingNav .sidenav-search {
+  width: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+  top: 0;
+  z-index: 2;
+  padding: 14px 12px 10px;
+  border-bottom: 1px solid var(--docs-border);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.96)) !important;
+}
+
+#scrollingNav .sidenav-search .search {
+  height: 34px !important;
+}
+
+#scrollingNav input.form-control {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: var(--docs-text);
+  height: 36px;
+  padding-left: 12px;
+  padding-right: 38px;
+  box-shadow: none;
+}
+
+#scrollingNav input.form-control::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+#scrollingNav input.form-control:focus {
+  outline: none;
+  border-color: rgba(15, 139, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(15, 139, 255, 0.12);
+}
+
+#scrollingNav .search-reset {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+#scrollingNav .search-reset {
+  background-color: rgba(15, 23, 42, 0.06) !important;
+  border-radius: 999px;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  user-select: none;
+}
+
+#scrollingNav .search-reset:hover {
+  background-color: rgba(15, 23, 42, 0.10) !important;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+#scrollingNav .nav-header a {
+  color: rgba(15, 23, 42, 0.88);
+  font-weight: 700;
+}
+
+#scrollingNav .nav-list>li>a {
+  color: rgba(15, 23, 42, 0.66);
+  border-radius: 10px;
+  margin: 2px 10px;
+  padding: 10px 12px;
+}
+
+#scrollingNav .nav-list>li>a:hover,
+#scrollingNav .nav-list>li.active>a,
+#scrollingNav .nav-list>li>a:focus {
+  color: var(--docs-text);
+  background: linear-gradient(90deg, rgba(15, 139, 255, 0.14), rgba(16, 185, 129, 0.10));
+  box-shadow: 0 0 0 1px rgba(15, 139, 255, 0.10) inset;
+}
+
+/* 卡片：panel 圆角 + 阴影 */
+.panel,
+.panel-default {
+  background: var(--docs-panel);
+  border: 1px solid rgba(15, 23, 42, 0.11);
+  border-radius: var(--docs-radius);
+  box-shadow: var(--docs-shadow);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* 卡片之间的间距更像“内容卡片流” */
+.show-api-article .panel,
+.show-api-article .panel-default {
+  margin-bottom: 22px;
+}
+
+.panel-heading {
+  background: linear-gradient(90deg, rgba(15, 139, 255, 0.07), rgba(16, 185, 129, 0.06));
+  border-bottom: 1px solid var(--docs-border);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.panel-title,
+.panel-title a {
+  color: var(--docs-text);
+  font-weight: 720;
+}
+
+.panel-body {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+#project {
+  background:
+    linear-gradient(135deg, rgba(15, 139, 255, 0.10), rgba(16, 185, 129, 0.08)),
+    rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 22px;
+  box-shadow: var(--docs-shadow);
+  padding: 28px 30px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+#project::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(15, 139, 255, 0.14), transparent 65%);
+  pointer-events: none;
+}
+
+#project h1,
+#project h2,
+#project h3,
+#project p,
+#project li,
+#project td,
+#project th,
+#project blockquote {
+  position: relative;
+  z-index: 1;
+}
+
+#project h1:first-child {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+#project p {
+  font-size: 15px;
+}
+
+#project table {
+  margin-top: 16px;
+}
+
+/* 分割线/文章边界淡化 */
+article {
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+hr {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* 表格：更现代 */
+th {
+  background: linear-gradient(180deg, rgba(15, 139, 255, 0.07), rgba(15, 23, 42, 0.03));
+  color: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  font-weight: 700;
+}
+
+td {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>td {
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+
+.table>tbody>tr:nth-child(even)>td {
+  background: rgba(15, 23, 42, 0.025);
+}
+
+/* 方法标签更像 badge */
+.label {
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.label-success,
+.label.GET {
+  background: rgba(16, 185, 129, 0.14) !important;
+  color: #047857 !important;
+}
+
+.label-info,
+.label.POST,
+.label-primary {
+  background: rgba(15, 139, 255, 0.14) !important;
+  color: #0a63b8 !important;
+}
+
+.label-warning,
+.label.PUT,
+.label.PATCH {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #b45309 !important;
+}
+
+.label-danger,
+.label.DELETE {
+  background: rgba(239, 68, 68, 0.14) !important;
+  color: #b91c1c !important;
+}
+
+/* 代码块：保留 prism 暗色但更圆角 */
+pre[class*="language-"],
+:not(pre)>code[class*="language-"] {
+  border-radius: 12px;
+}
+
+pre,
+code {
+  border-radius: 12px;
+}
+
+pre {
+  background: var(--docs-code-bg) !important;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* 让 inline code 更像文档 */
+:not(pre)>code {
+  background: rgba(15, 139, 255, 0.08) !important;
+  color: rgba(10, 70, 140, 0.95) !important;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+blockquote {
+  border-left: 4px solid var(--docs-accent);
+  background: linear-gradient(90deg, rgba(15, 139, 255, 0.08), rgba(15, 139, 255, 0.02));
+  color: rgba(18, 32, 51, 0.80);
+  border-radius: 0 14px 14px 0;
+  padding: 12px 16px;
+  margin: 18px 0;
+}
+
+ul,
+ol {
+  color: var(--docs-muted);
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+.container-fluid {
+  padding-bottom: 36px;
+}
+
+/* 示例请求：统一成接口调试面板风格 */
+.well {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 254, 0.98));
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  padding: 18px 18px 16px;
+}
+
+.well>h3:first-child,
+.sample-request-response>h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 24px;
+  font-weight: 740;
+}
+
+.well .form-horizontal {
+  margin-top: 8px;
+}
+
+.well .form-horizontal .col-md-3,
+.well .form-horizontal .col-md-6,
+.well .form-horizontal .col-md-9 {
+  float: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.well fieldset>h3 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+  border-left: 3px solid rgba(15, 139, 255, 0.72);
+}
+
+.well .form-group {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 12px;
+}
+
+.well .form-group:last-of-type {
+  border-bottom: 0;
+}
+
+.well .control-label {
+  display: block;
+  margin-bottom: 6px;
+  padding-top: 0;
+  color: var(--docs-text);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.well .input-group {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  border-collapse: separate;
+}
+
+.well .input-group .form-control {
+  flex: 1 1 auto;
+}
+
+.well .input-group-addon,
+.well .sample-request-select,
+.well select.form-control,
+.well input.form-control,
+.well textarea.form-control,
+.well .sample-request-input-Boolean-container {
+  height: 38px;
+  border-color: rgba(15, 23, 42, 0.11);
+}
+
+.well .input-group-addon {
+  min-width: 68px;
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(18, 32, 51, 0.70);
+  border: 1px solid rgba(15, 23, 42, 0.11);
+  font-weight: 600;
+}
+
+.well .input-group-addon.sample-request-select {
+  padding: 0;
+  overflow: hidden;
+}
+
+.well .sample-request-select select,
+.well .sample-request-content-type-switch,
+.well .sample-header-content-type-switch {
+  height: 38px;
+  border: 1px solid rgba(15, 23, 42, 0.11);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--docs-text);
+  box-shadow: none;
+}
+
+.well .sample-request-select select {
+  border: 0;
+  border-radius: 0;
+}
+
+.well .sample-header-content-type-switch,
+.well .sample-request-content-type-switch {
+  max-width: 220px;
+  margin-bottom: 8px;
+}
+
+.well input.form-control,
+.well textarea.form-control,
+.well select.form-control,
+.well .sample-request-url,
+.well .sample-request-input,
+.well .sample-request-param,
+.well .sample-request-body {
+  border: 1px solid rgba(15, 23, 42, 0.11);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--docs-text);
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.well textarea.form-control,
+.well .sample-request-body {
+  min-height: 120px;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  resize: vertical;
+}
+
+.well input.form-control:focus,
+.well textarea.form-control:focus,
+.well select.form-control:focus,
+.well .sample-request-url:focus,
+.well .sample-request-input:focus,
+.well .sample-request-param:focus,
+.well .sample-request-body:focus {
+  border-color: rgba(15, 139, 255, 0.36);
+  box-shadow: 0 0 0 3px rgba(15, 139, 255, 0.12);
+}
+
+.well .col-md-3>select.form-control,
+.well .col-md-3>.sample-header-content-type-switch,
+.well .col-md-3>.sample-request-content-type-switch {
+  width: 100%;
+}
+
+.well .sample-request-param-fields,
+.well .sample-request-param-body,
+.well [id^="sample-request-body-json-input-"],
+.well [id^="sample-request-body-form-input-"] {
+  width: 100%;
+  clear: both;
+}
+
+.well .sample-request-param-fields .form-group,
+.well [id^="sample-request-body-form-input-"] .form-group,
+.well .sample-request-header-fields .form-group {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.well .sample-request-input-Boolean-container {
+  width: 46px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(15, 23, 42, 0.11);
+  border-radius: 10px;
+}
+
+.well .sample-request-input-Boolean-container>div {
+  margin-top: 8px;
+}
+
+.well .controls.pull-right {
+  display: flex;
+  gap: 8px;
+  float: none !important;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.well .btn.sample-request-send,
+.well .btn.sample-request-clear,
+.sample-request-response .btn.sample-request-clear {
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+.well .btn.sample-request-send {
+  background: #0f8bff !important;
+  color: #ffffff !important;
+}
+
+.well .btn.sample-request-clear {
+  background: #ffffff !important;
+  color: rgba(18, 32, 51, 0.86) !important;
+}
+
+.well .btn.sample-request-send:hover,
+.well .btn.sample-request-clear:hover,
+.sample-request-response .btn.sample-request-clear:hover {
+  transform: none;
+}
+
+.sample-request-response {
+  margin-top: 16px;
+  padding: 14px 14px 4px;
+  background: rgba(15, 23, 42, 0.025);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+}
+
+.sample-request-response>h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.sample-request-response .btn.sample-request-clear {
+  padding: 4px 8px;
+  background: #ffffff !important;
+}
+
+.sample-request-response pre {
+  margin-top: 10px;
+}
+
+/* 让 a:focus 不再整块蓝底 */
+a:focus {
+  background-color: transparent !important;
+  outline: 2px solid rgba(15, 139, 255, 0.25);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  #scrollingNav {
+    position: static;
+    width: 100%;
+    bottom: auto;
+    overflow: visible;
+  }
+
+  #scrollingNav .sidenav-search,
+  #scrollingNav .sidenav {
+    position: static;
+    width: 100% !important;
+    left: auto !important;
+  }
+
+  #scrollingNav .sidenav {
+    padding-top: 8px;
+  }
+
+  #content {
+    margin-left: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #project {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+
+  .well {
+    padding: 14px 12px;
+    border-radius: 14px;
+  }
+
+  .well .form-group {
+    padding: 10px;
+  }
+
+  .well .sample-header-content-type-switch,
+  .well .sample-request-content-type-switch {
+    max-width: none;
+  }
+
+  .well .controls.pull-right {
+    justify-content: stretch;
+  }
+
+  .well .controls.pull-right .btn {
+    flex: 1;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
